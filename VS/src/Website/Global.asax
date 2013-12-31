@@ -1,0 +1,1 @@
+﻿<%@ Application Inherits="SkyJinx.Web.Mvc.App" %>
