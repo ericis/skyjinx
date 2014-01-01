@@ -14,11 +14,13 @@
     <![endif]-->
 </head>
 <body>
-    @*<div ng-view></div>*@
-    <div class="container">
-        {{'SkyJinx says: ' + ' hello ASP.NET MVC + RequireJS + AngularJS + Bootstrap + jQuery!'}}
-    </div>
+    <div ng-view></div>
     <script>
+        /*
+          - paths: RequireJS accepts an array of paths for each script in the order of download priority.
+                   Usually, this order is one or more CDN paths followed by a local fall-back path in case the CDN is down.
+                   *The "//" prefix avoids the problem of specifying 'http' vs. 'https' for your app's needs (i.e. CDN uses the same HTTP scheme as your app)
+        */
         var require = {
             paths: {
                 'jquery': ['//code.jquery.com/jquery-2.0.3.min', '@Url.Require("~/Scripts/jquery-2.0.3.min.js")'],
@@ -32,7 +34,7 @@
                     deps: ['jquery']
                 },
                 'angular': {
-                    exports: 'angular'
+                    exports: 'angular' // window.angular
                 },
                 'angular-route': {
                     deps: ['angular']
