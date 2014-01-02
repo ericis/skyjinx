@@ -7,7 +7,7 @@ SkyJinx is an opinionated, flexible web framework using the latest technologies 
 * [RequireJS](http://requirejs.org/)
 * [AngularJS](http://angularjs.org/)
 * [Bootstrap](http://getbootstrap.com/)
-* [jQuery](http://www.jquery.com/)
+* Optional: [jQuery](http://www.jquery.com/)
 
 ---
 [README Markdown Syntax](https://github.com/fletcher/MultiMarkdown/blob/master/Documentation/Markdown%20Syntax.md)
