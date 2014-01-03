@@ -30,7 +30,8 @@
                 'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min', '@Url.Require("~/Scripts/angular.min.js")'],
                 'angular-route': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-route.min', '@Url.Require("~/Scripts/angular-route.min.js")'],
                 'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-animate.min', '@Url.Require("~/Scripts/angular-animate.min.js")'],
-                'skyjinx': ['@Url.Require("~/skyjinx/skyjinx.min.js")']
+                'skyjinx': ['@Url.Require("~/skyjinx/skyjinx.min.js")'],
+                'skyjinx-bootstrap': ['@Url.Require("~/skyjinx/skyjinx.min.js")']
             },
             shim: {
                 'bootstrap': {
@@ -46,10 +47,10 @@
                     deps: ['angular']
                 },
                 'skyjinx': {
-                    deps: ['bootstrap','angular']
+                    deps: []
                 },
-                'skyjinx-ng-bs': {
-                    deps: ['skyjinx']
+                'skyjinx-bootstrap': {
+                    deps: ['bootstrap', 'angular']
                 }
             }
         };

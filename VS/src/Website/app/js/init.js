@@ -10,8 +10,8 @@
 
 /*
   Dependencies:
-    - skyjinx: Downloads the SkyJinx file.
-    - app: This JS application
+    - angular: Initializes AngularJS.
+    - myapp: Initializes this application.
 */
 define('init', ['angular', 'myapp'], function (angular, app) {
     'use strict';

@@ -1,4 +1,4 @@
-﻿// <copyright file="app.js" company="Eric Swanson">
+﻿// <copyright file="bootstrap.js" company="Eric Swanson">
 // Copyright (C) 2014 Eric Swanson
 //      
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -10,20 +10,21 @@
 
 /*
   Dependencies:
-    - angular: Downloads the AngularJS file.
+    - angular: Initializes AngularJS.
 */
-define('skyjinx', ['angular'], function (angular) {
+define('skyjinx-bootstrap', ['angular'], function (angular) {
     'use strict';
 
-    //console.log('define: skyjinx'); // debug define() calls
-    
+    //console.log('define: skyjinx-bootstrap'); // debug define() calls
+
+    // AngularJS module dependencies
     var dependencies = [];
 
-    var skyjinx = {
-        bootstrap: angular.module('skyjinx.bootstrap', dependencies)
-    };
+    // define the bootstrap module
+    var bootstrap = angular.module('skyjinx-bootstrap', dependencies);
 
-    skyjinx.bootstrap.
+    // define the directives
+    bootstrap.
         directive('bsContainer', function () {
             return {
                 restrict: 'E',
@@ -60,5 +61,5 @@ define('skyjinx', ['angular'], function (angular) {
             };
         });
         
-    return skyjinx;
+    return bootstrap;
 });

@@ -1,7 +1,5 @@
 ﻿///#source 1 1 /skyjinx/bootstrap/js/core.js
-
-///#source 1 1 /skyjinx/bootstrap/js/bootstrap.js
-// <copyright file="app.js" company="Eric Swanson">
+// <copyright file="core.js" company="Eric Swanson">
 // Copyright (C) 2014 Eric Swanson
 //      
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -13,20 +11,43 @@
 
 /*
   Dependencies:
-    - angular: Downloads the AngularJS file.
+    - n/a
 */
-define('skyjinx', ['angular'], function (angular) {
+define('skyjinx', [], function () {
     'use strict';
 
     //console.log('define: skyjinx'); // debug define() calls
-    
+
+    return {};
+});
+///#source 1 1 /skyjinx/bootstrap/js/bootstrap.js
+// <copyright file="bootstrap.js" company="Eric Swanson">
+// Copyright (C) 2014 Eric Swanson
+//      
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// </copyright>
+
+/*
+  Dependencies:
+    - angular: Initializes AngularJS.
+*/
+define('skyjinx-bootstrap', ['angular'], function (angular) {
+    'use strict';
+
+    //console.log('define: skyjinx-bootstrap'); // debug define() calls
+
+    // AngularJS module dependencies
     var dependencies = [];
 
-    var skyjinx = {
-        bootstrap: angular.module('skyjinx.bootstrap', dependencies)
-    };
+    // define the bootstrap module
+    var bootstrap = angular.module('skyjinx-bootstrap', dependencies);
 
-    skyjinx.bootstrap.
+    // define the directives
+    bootstrap.
         directive('bsContainer', function () {
             return {
                 restrict: 'E',
@@ -63,5 +84,5 @@ define('skyjinx', ['angular'], function (angular) {
             };
         });
         
-    return skyjinx;
+    return bootstrap;
 });

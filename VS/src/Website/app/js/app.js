@@ -10,11 +10,12 @@
 
 /*
   Dependencies:
-    - angular: Downloads the AngularJS file.
-    - myapp-routes: This application's routes.
-    - skyjinx-ng-bs: Downloads the SkyJinx Angular Bootstrap extensions.
+    - angular: Initializes AngularJS.
+    - skyjinx-bootstrap: Initializes the SkyJinx Angular Bootstrap extensions.
+    - myapp-routes: Initializes this application's routes.
+    - myapp-controllers: Initializes this application's controllers.
 */
-define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], function (angular) {
+define('myapp', ['angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (angular) {
     'use strict';
 
     //console.log('define: myapp'); // debug define() calls
@@ -23,7 +24,7 @@ define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], fun
     var APP_NAME = 'myapp';
 
     // Your app's dependencies
-    var dependencies = ['skyjinx.bootstrap', 'myapp-controllers', 'myapp-routes'];
+    var dependencies = ['skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'];
 
     // create the app module
     var app = angular.module('myapp', dependencies);

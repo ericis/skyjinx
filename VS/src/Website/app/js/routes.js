@@ -10,7 +10,8 @@
 
 /*
   Dependencies:
-    - angular-route: Downloads the AngularJS ngRoute module file.
+    - angular: Initializes AngularJS.
+    - angular-route: Initializes the AngularJS ngRoute module.
 */
 define('myapp-routes', ['angular','angular-route'], function (angular) {
     'use strict';
