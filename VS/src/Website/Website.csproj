@@ -79,7 +79,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\html\contact.html" />
+    <Content Include="app\html\about.html" />
+    <Content Include="app\html\nav.html" />
     <Content Include="app\html\index.html" />
+    <Content Include="app\img\favicon.png" />
+    <Content Include="app\img\skyjinx-inverted_128x128.png" />
+    <Content Include="app\img\skyjinx_128x128.png" />
+    <Content Include="app\img\skyjinx_256x256.png" />
+    <Content Include="app\js\directives.js" />
     <Content Include="app\js\routes.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -429,9 +437,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\img\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MVC\MVC.fsproj">
       <Project>{6830ff2f-9e56-40b2-94e9-dcd0605549ef}</Project>

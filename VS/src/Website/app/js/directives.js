@@ -1,4 +1,4 @@
-﻿// <copyright file="controllers.js" company="Eric Swanson">
+﻿// <copyright file="app.js" company="Eric Swanson">
 // Copyright (C) 2014 Eric Swanson
 //      
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -13,34 +13,29 @@
     - module: This RequireJS module.
     - angular: Initializes AngularJS.
 */
-define('myapp-controllers', ['module', 'angular'], function (module, angular) {
+define('myapp-directives', ['module', 'angular'], function (module, angular) {
     'use strict';
 
     //console.log('define: ' + module.id); // debug define() calls
 
-    // AngularJS module dependencies
+    // Your app's dependencies
     var dependencies = [];
 
-    // create the controllers module
-    var controllers = angular.module(module.id, dependencies);
+    // create the app module
+    var directives = angular.module(module.id, dependencies);
 
-    // add each controller
-    controllers.
-        controller('NavCtrl', ['$scope', '$log', '$location', function ($scope, $log, $location) {
-            $log.info('NavCtrl()');
-            $log.info('Current path: ' + $location.path());
-
-            $scope.title = "SkyJinx";
-
-            $scope.items = [
-                { title: 'Home', url: '#', selected: $location.path() === '/index' },
-                { title: 'About', url: '#/about', selected: $location.path() === '/about' },
-                { title: 'Contact', url: '#/contact', selected: $location.path() === '/contact' }
-            ];
-        }]);
+    // define the directives
+    directives.
+        directive('mynav', function () {
+            return {
+                restrict: 'E',
+                transclude: false,
+                templateUrl: 'app/html/nav.html'
+            };
+        });
 
     return {
         id: module.id,
-        module: controllers
+        module: directives
     };
 });

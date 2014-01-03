@@ -3,6 +3,7 @@
   <!--The order of the <file> elements determines the order of the file contents when bundled.-->
   <file>/app/js/controllers.js</file>
   <file>/app/js/routes.js</file>
+  <file>/app/js/directives.js</file>
   <file>/app/js/app.js</file>
   <file>/app/js/init.js</file>
 </bundle>

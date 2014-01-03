@@ -29,8 +29,13 @@ define('myapp-routes', ['module', 'angular','angular-route'], function (module, 
     routes.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/index', {
-                templateUrl: 'app/html/index.html',
-                //controller: 'MainCtrl'
+                templateUrl: 'app/html/index.html'
+            }).
+            when('/about', {
+                templateUrl: 'app/html/about.html'
+            }).
+            when('/contact', {
+                templateUrl: 'app/html/contact.html'
             }).
             otherwise({
                 redirectTo: '/index'

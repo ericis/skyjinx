@@ -1,6 +1,20 @@
 ﻿body {
     padding-top: 50px;
 }
+.navbar-brand {
+    background-repeat: no-repeat;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -webkit-background-size: contain;
+    background-size: contain;
+    padding-left: 60px;
+}
+.navbar-default .navbar-brand {
+    background-image: url(../img/skyjinx_128x128.png);
+}
+.navbar-inverse .navbar-brand {
+    background-image: url(../img/skyjinx-inverted_128x128.png);
+}
 .starter-template {
     padding: 40px 15px;
     text-align: center;

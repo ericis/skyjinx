@@ -16,13 +16,13 @@
     - myapp-routes: Initializes this application's routes.
     - myapp-controllers: Initializes this application's controllers.
 */
-define('myapp', ['module', 'angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (module, angular, bootstrap, routes, controllers) {
+define('myapp', ['module', 'angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers', 'myapp-directives'], function (module, angular, bootstrap, routes, controllers, directives) {
     'use strict';
 
     //console.log('define: ' + module.id); // debug define() calls
 
     // Your app's dependencies
-    var dependencies = [bootstrap.id, routes.id, controllers.id];
+    var dependencies = [bootstrap.id, routes.id, controllers.id, directives.id];
 
     // create the app module
     var app = angular.module(module.id, dependencies);

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
     <link rel="stylesheet" href="~/app/css/main.min.css" />
-    @*<link rel="shortcut icon" href="~/app/favicon.png" type="image/x-icon" />*@
+    <link rel="shortcut icon" href="~/app/img/favicon.png" type="image/x-icon" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -25,29 +25,27 @@
         */
         var require = {
             paths: {
-                'jquery': ['//code.jquery.com/jquery-2.0.3.min', '@Url.Require("~/Scripts/jquery-2.0.3.min.js")'],
                 'bootstrap': ['@Url.Require("~/Scripts/bootstrap.min.js")'],
                 'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min', '@Url.Require("~/Scripts/angular.min.js")'],
                 'angular-route': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-route.min', '@Url.Require("~/Scripts/angular-route.min.js")'],
                 'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-animate.min', '@Url.Require("~/Scripts/angular-animate.min.js")'],
                 'skyjinx': ['@Url.Require("~/skyjinx/skyjinx.min.js")'],
-                'skyjinx-bootstrap': ['@Url.Require("~/skyjinx/skyjinx.min.js")']
+                'skyjinx-bootstrap': ['@Url.Require("~/skyjinx/skyjinx.min.js")'],
+                // optional
+                'jquery': ['//code.jquery.com/jquery-2.0.3.min', '@Url.Require("~/Scripts/jquery-2.0.3.min.js")'],
             },
             shim: {
                 'bootstrap': {
                     deps: ['jquery']
                 },
                 'angular': {
-                    exports: 'angular' // window.angular
+                    exports: 'angular' // window.angular global
                 },
                 'angular-route': {
                     deps: ['angular']
                 },
                 'angular-animate': {
                     deps: ['angular']
-                },
-                'skyjinx': {
-                    deps: []
                 },
                 'skyjinx-bootstrap': {
                     deps: ['bootstrap', 'angular']

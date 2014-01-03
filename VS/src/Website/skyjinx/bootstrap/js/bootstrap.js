@@ -38,17 +38,24 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
                 restrict: 'EA',
                 transclude: false,
                 scope: {
-                    toggleTitle: '@',
-                    brandTitle: '@',
-                    items: '='
+                    toggleTitle: '=',
+                    brandTitle: '=',
+                    items: '=',
+                    inverted: '@',
+                    fixed: '@'
                 },
                 controller: ['$scope', '$log', function ($scope, $log) {
                     var toggleTitle = angular.isDefined($scope.toggleTitle) ? $scope.toggleTitle : 'Toggle navigation';
                     var brandTitle = angular.isDefined($scope.brandTitle) ? $scope.brandTitle : '[Brand Title]';
-                        
+                    
                     if (!angular.isDefined($scope.items)) {
                         $scope.items = [];
                     }
+
+                    $scope.flags = {
+                        isInverted: angular.isDefined($scope.inverted) ? $scope.$eval($scope.inverted) : false,
+                        isFixed: angular.isDefined($scope.fixed) ? $scope.$eval($scope.fixed) : false
+                    };
 
                     $scope.brand = {
                         title: brandTitle
