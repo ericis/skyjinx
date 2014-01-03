@@ -1,0 +1,18 @@
+
+------------------------------------------------------------------------------------
+ Asset Attributions
+------------------------------------------------------------------------------------
+
+The SkyJinx Logos
+  - skyjinx_256x256.png
+  - skyjinx_32x32.png
+
+  cloud_icon
+    https://www.iconfinder.com/icons/183554/cloud_icon
+    License: Free for commercial use
+    Author:  Yannick Lung (http://www.yanlu.de)
+
+  bad_egg_icon
+    https://www.iconfinder.com/icons/66311/bad_egg_icon
+    License: Free for non commercial use
+    Author:  Rokey (http://rokey.deviantart.com/art/eico-1-year-25294190)
