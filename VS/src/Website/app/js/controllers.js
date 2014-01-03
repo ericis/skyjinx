@@ -10,15 +10,19 @@
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
 */
-define('myapp-controllers', ['angular'], function (angular) {
+define('myapp-controllers', ['module', 'angular'], function (module, angular) {
     'use strict';
 
+    //console.log('define: ' + module.id); // debug define() calls
+
+    // AngularJS module dependencies
     var dependencies = [];
 
     // create the controllers module
-    var controllers = angular.module('myapp-controllers', dependencies);
+    var controllers = angular.module(module.id, dependencies);
 
     // add each controller
     controllers.

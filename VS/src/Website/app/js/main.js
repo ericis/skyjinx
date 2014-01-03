@@ -11,15 +11,19 @@
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
 */
-define('myapp-controllers', ['angular'], function (angular) {
+define('myapp-controllers', ['module', 'angular'], function (module, angular) {
     'use strict';
 
+    //console.log('define: ' + module.id); // debug define() calls
+
+    // AngularJS module dependencies
     var dependencies = [];
 
     // create the controllers module
-    var controllers = angular.module('myapp-controllers', dependencies);
+    var controllers = angular.module(module.id, dependencies);
 
     // add each controller
     controllers.
@@ -48,19 +52,20 @@ define('myapp-controllers', ['angular'], function (angular) {
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
     - angular-route: Initializes the AngularJS ngRoute module.
 */
-define('myapp-routes', ['angular','angular-route'], function (angular) {
+define('myapp-routes', ['module', 'angular','angular-route'], function (module, angular) {
     'use strict';
 
-    //console.log('define: routes'); // debug define() calls
-    
+    //console.log('define: ' + module.id); // debug define() calls
+
     // AngularJS module dependencies
     var dependencies = ['ngRoute'];
 
     // create the routes module
-    var routes = angular.module('myapp-routes', dependencies);
+    var routes = angular.module(module.id, dependencies);
 
     // configure the routes
     routes.config(['$routeProvider', function ($routeProvider) {
@@ -89,24 +94,22 @@ define('myapp-routes', ['angular','angular-route'], function (angular) {
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
     - skyjinx-bootstrap: Initializes the SkyJinx Angular Bootstrap extensions.
     - myapp-routes: Initializes this application's routes.
     - myapp-controllers: Initializes this application's controllers.
 */
-define('myapp', ['angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (angular) {
+define('myapp', ['module', 'angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (module, angular) {
     'use strict';
 
-    //console.log('define: myapp'); // debug define() calls
-
-    // The name of your AngularJS application
-    var APP_NAME = 'myapp';
+    //console.log('define: ' + module.id); // debug define() calls
 
     // Your app's dependencies
     var dependencies = ['skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'];
 
     // create the app module
-    var app = angular.module('myapp', dependencies);
+    var app = angular.module(module.id, dependencies);
 
     return app;
 });
@@ -123,20 +126,25 @@ define('myapp', ['angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controll
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
     - myapp: Initializes this application.
 */
-define('init', ['angular', 'myapp'], function (angular, app) {
+define('init', ['module', 'angular', 'myapp'], function (module, angular, app) {
     'use strict';
 
-    //console.log('define: init'); // debug define() calls
-    
+    //console.log('define: ' + module.id); // debug define() calls
+
+    // AngularJS bootstrap dependencies
+    var dependencies = ['myapp'];
+
     // bootstrap the app to the document
-    // *This could be scoped to a specific element.
-    angular.bootstrap(document, ['myapp']);
+    // *This could be scoped to a specific element in the page.
+    angular.bootstrap(document, dependencies);
 
     // return the modified app
     return app;
 });
 
+// require the initialization module (run it and all of its dependencies)
 require(['init']);

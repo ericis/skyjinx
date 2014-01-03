@@ -10,19 +10,20 @@
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
     - angular-route: Initializes the AngularJS ngRoute module.
 */
-define('myapp-routes', ['angular','angular-route'], function (angular) {
+define('myapp-routes', ['module', 'angular','angular-route'], function (module, angular) {
     'use strict';
 
-    //console.log('define: routes'); // debug define() calls
-    
+    //console.log('define: ' + module.id); // debug define() calls
+
     // AngularJS module dependencies
     var dependencies = ['ngRoute'];
 
     // create the routes module
-    var routes = angular.module('myapp-routes', dependencies);
+    var routes = angular.module(module.id, dependencies);
 
     // configure the routes
     routes.config(['$routeProvider', function ($routeProvider) {

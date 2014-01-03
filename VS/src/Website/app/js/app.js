@@ -10,24 +10,22 @@
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
     - skyjinx-bootstrap: Initializes the SkyJinx Angular Bootstrap extensions.
     - myapp-routes: Initializes this application's routes.
     - myapp-controllers: Initializes this application's controllers.
 */
-define('myapp', ['angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (angular) {
+define('myapp', ['module', 'angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (module, angular) {
     'use strict';
 
-    //console.log('define: myapp'); // debug define() calls
-
-    // The name of your AngularJS application
-    var APP_NAME = 'myapp';
+    //console.log('define: ' + module.id); // debug define() calls
 
     // Your app's dependencies
     var dependencies = ['skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'];
 
     // create the app module
-    var app = angular.module('myapp', dependencies);
+    var app = angular.module(module.id, dependencies);
 
     return app;
 });

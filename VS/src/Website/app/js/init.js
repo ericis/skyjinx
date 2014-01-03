@@ -10,20 +10,25 @@
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
     - myapp: Initializes this application.
 */
-define('init', ['angular', 'myapp'], function (angular, app) {
+define('init', ['module', 'angular', 'myapp'], function (module, angular, app) {
     'use strict';
 
-    //console.log('define: init'); // debug define() calls
-    
+    //console.log('define: ' + module.id); // debug define() calls
+
+    // AngularJS bootstrap dependencies
+    var dependencies = ['myapp'];
+
     // bootstrap the app to the document
-    // *This could be scoped to a specific element.
-    angular.bootstrap(document, ['myapp']);
+    // *This could be scoped to a specific element in the page.
+    angular.bootstrap(document, dependencies);
 
     // return the modified app
     return app;
 });
 
+// require the initialization module (run it and all of its dependencies)
 require(['init']);

@@ -11,12 +11,12 @@
 
 /*
   Dependencies:
-    - n/a
+    - module: This RequireJS module.
 */
-define('skyjinx', [], function () {
+define('skyjinx', ['module'], function (module) {
     'use strict';
 
-    //console.log('define: skyjinx'); // debug define() calls
+    //console.log('define: ' + module.id); // debug define() calls
 
     return {};
 });
@@ -33,18 +33,19 @@ define('skyjinx', [], function () {
 
 /*
   Dependencies:
+    - module: This RequireJS module.
     - angular: Initializes AngularJS.
 */
-define('skyjinx-bootstrap', ['angular'], function (angular) {
+define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
     'use strict';
 
-    //console.log('define: skyjinx-bootstrap'); // debug define() calls
+    //console.log('define: ' + module.id); // debug define() calls
 
     // AngularJS module dependencies
     var dependencies = [];
 
     // define the bootstrap module
-    var bootstrap = angular.module('skyjinx-bootstrap', dependencies);
+    var bootstrap = angular.module(module.id, dependencies);
 
     // define the directives
     bootstrap.

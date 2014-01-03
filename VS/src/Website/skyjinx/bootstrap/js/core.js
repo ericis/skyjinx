@@ -10,12 +10,12 @@
 
 /*
   Dependencies:
-    - n/a
+    - module: This RequireJS module.
 */
-define('skyjinx', [], function () {
+define('skyjinx', ['module'], function (module) {
     'use strict';
 
-    //console.log('define: skyjinx'); // debug define() calls
+    //console.log('define: ' + module.id); // debug define() calls
 
     return {};
 });
