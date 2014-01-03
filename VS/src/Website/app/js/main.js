@@ -12,22 +12,24 @@
 define('myapp-controllers', ['angular'], function (angular) {
     'use strict';
 
-    var addControllers = function (app) {
-        app.
-            controller('NavCtrl', ['$scope', '$log', function ($scope, $log) {
-                $log.info('NavCtrl()');
+    var dependencies = [];
 
-                $scope.items = [
-                    { title: 'Home', url: '#', selected: true },
-                    { title: 'About', url: '#/about', selected: false },
-                    { title: 'Contact', url: '#/contact', selected: false }
-                ];
-            }]);
-    };
+    // create the controllers module
+    var controllers = angular.module('myapp-controllers', dependencies);
 
-    return {
-        addControllers: addControllers
-    };
+    // add each controller
+    controllers.
+        controller('NavCtrl', ['$scope', '$log', function ($scope, $log) {
+            $log.info('NavCtrl()');
+
+            $scope.items = [
+                { title: 'Home', url: '#', selected: true },
+                { title: 'About', url: '#/about', selected: false },
+                { title: 'Contact', url: '#/contact', selected: false }
+            ];
+        }]);
+
+    return controllers;
 });
 ///#source 1 1 /app/js/routes.js
 // <copyright file="routes.js" company="Eric Swanson">
@@ -44,14 +46,19 @@ define('myapp-controllers', ['angular'], function (angular) {
   Dependencies:
     - angular-route: Downloads the AngularJS ngRoute module file.
 */
-define('myapp-routes', ['angular-route'], function () {
+define('myapp-routes', ['angular','angular-route'], function (angular) {
     'use strict';
 
     //console.log('define: routes'); // debug define() calls
+    
+    // AngularJS module dependencies
+    var dependencies = ['ngRoute'];
 
-    // initialization routine for routes
-    // $routeProvider is an AngularJS argument
-    var initialize = function ($routeProvider) {
+    // create the routes module
+    var routes = angular.module('myapp-routes', dependencies);
+
+    // configure the routes
+    routes.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/index', {
                 templateUrl: 'app/html/index.html',
@@ -60,18 +67,7 @@ define('myapp-routes', ['angular-route'], function () {
             otherwise({
                 redirectTo: '/index'
             });
-    };
-
-    // AngularJS module dependencies
-    var dependencies = ['ngRoute'];
-
-    // AngularJS config array
-    var appConfig = ['$routeProvider', initialize];
-
-    var routes = {
-        dependencies: dependencies,
-        appConfig: appConfig
-    };
+    }]);
 
     return routes;
 });
@@ -92,7 +88,7 @@ define('myapp-routes', ['angular-route'], function () {
     - myapp-routes: This application's routes.
     - skyjinx-ng-bs: Downloads the SkyJinx Angular Bootstrap extensions.
 */
-define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], function (angular, routes, controllers, skyJinx) {
+define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], function (angular) {
     'use strict';
 
     //console.log('define: myapp'); // debug define() calls
@@ -101,22 +97,10 @@ define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], fun
     var APP_NAME = 'myapp';
 
     // Your app's dependencies
-    var dependencies = [/*... AngularJS modules, or your custom modules (e.g. services) ...*/];
+    var dependencies = ['skyjinx.bootstrap', 'myapp-controllers', 'myapp-routes'];
 
-    // add route dependencies
-    angular.forEach(routes.dependencies, function (dep) { dependencies.push(dep); });
-
-    // create the app
+    // create the app module
     var app = angular.module('myapp', dependencies);
-
-    // config routes
-    app.config(routes.appConfig);
-
-    // add AngularJS directives for bootstrap
-    skyJinx.angular.addBootstrapDirectives(app);
-
-    // add app controllers
-    controllers.addControllers(app);
 
     return app;
 });

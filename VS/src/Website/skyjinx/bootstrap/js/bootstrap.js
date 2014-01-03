@@ -12,55 +12,53 @@
   Dependencies:
     - angular: Downloads the AngularJS file.
 */
-define('skyjinx', ['angular'], function () {
+define('skyjinx', ['angular'], function (angular) {
     'use strict';
 
     //console.log('define: skyjinx'); // debug define() calls
     
-    var addBootstrapDirectives = function (app) {
-        app.
-            directive('bsContainer', function () {
-                return {
-                    restrict: 'E',
-                    transclude: true,
-                    templateUrl: 'skyjinx/bootstrap/html/container.html'
-                };
-            }).
-            directive('bsNavbar', function () {
-                return {
-                    restrict: 'EA',
-                    transclude: false,
-                    scope: {
-                        toggleTitle: '@',
-                        brandTitle: '@',
-                        items: '='
-                    },
-                    controller: ['$scope', '$log', function ($scope, $log) {
-                        var toggleTitle = angular.isDefined($scope.toggleTitle) ? $scope.toggleTitle : 'Toggle navigation';
-                        var brandTitle = angular.isDefined($scope.brandTitle) ? $scope.brandTitle : '[Brand Title]';
+    var dependencies = [];
+
+    var skyjinx = {
+        bootstrap: angular.module('skyjinx.bootstrap', dependencies)
+    };
+
+    skyjinx.bootstrap.
+        directive('bsContainer', function () {
+            return {
+                restrict: 'E',
+                transclude: true,
+                templateUrl: 'skyjinx/bootstrap/html/container.html'
+            };
+        }).
+        directive('bsNavbar', function () {
+            return {
+                restrict: 'EA',
+                transclude: false,
+                scope: {
+                    toggleTitle: '@',
+                    brandTitle: '@',
+                    items: '='
+                },
+                controller: ['$scope', '$log', function ($scope, $log) {
+                    var toggleTitle = angular.isDefined($scope.toggleTitle) ? $scope.toggleTitle : 'Toggle navigation';
+                    var brandTitle = angular.isDefined($scope.brandTitle) ? $scope.brandTitle : '[Brand Title]';
                         
-                        if (!angular.isDefined($scope.items)) {
-                            $scope.items = [];
-                        }
+                    if (!angular.isDefined($scope.items)) {
+                        $scope.items = [];
+                    }
 
-                        $scope.brand = {
-                            title: brandTitle
-                        };
+                    $scope.brand = {
+                        title: brandTitle
+                    };
 
-                        $scope.toggle = {
-                            title: toggleTitle
-                        };
-                    }],
-                    templateUrl: 'skyjinx/bootstrap/html/navbar.html'
-                };
-            });
-
-        return app;
-    };
-
-    return {
-        angular: {
-            addBootstrapDirectives: addBootstrapDirectives
-        }
-    };
+                    $scope.toggle = {
+                        title: toggleTitle
+                    };
+                }],
+                templateUrl: 'skyjinx/bootstrap/html/navbar.html'
+            };
+        });
+        
+    return skyjinx;
 });

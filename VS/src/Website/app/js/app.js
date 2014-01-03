@@ -14,7 +14,7 @@
     - myapp-routes: This application's routes.
     - skyjinx-ng-bs: Downloads the SkyJinx Angular Bootstrap extensions.
 */
-define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], function (angular, routes, controllers, skyJinx) {
+define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], function (angular) {
     'use strict';
 
     //console.log('define: myapp'); // debug define() calls
@@ -23,22 +23,10 @@ define('myapp', ['angular', 'myapp-routes', 'myapp-controllers', 'skyjinx'], fun
     var APP_NAME = 'myapp';
 
     // Your app's dependencies
-    var dependencies = [/*... AngularJS modules, or your custom modules (e.g. services) ...*/];
+    var dependencies = ['skyjinx.bootstrap', 'myapp-controllers', 'myapp-routes'];
 
-    // add route dependencies
-    angular.forEach(routes.dependencies, function (dep) { dependencies.push(dep); });
-
-    // create the app
+    // create the app module
     var app = angular.module('myapp', dependencies);
-
-    // config routes
-    app.config(routes.appConfig);
-
-    // add AngularJS directives for bootstrap
-    skyJinx.angular.addBootstrapDirectives(app);
-
-    // add app controllers
-    controllers.addControllers(app);
 
     return app;
 });

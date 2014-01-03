@@ -11,20 +11,22 @@
 define('myapp-controllers', ['angular'], function (angular) {
     'use strict';
 
-    var addControllers = function (app) {
-        app.
-            controller('NavCtrl', ['$scope', '$log', function ($scope, $log) {
-                $log.info('NavCtrl()');
+    var dependencies = [];
 
-                $scope.items = [
-                    { title: 'Home', url: '#', selected: true },
-                    { title: 'About', url: '#/about', selected: false },
-                    { title: 'Contact', url: '#/contact', selected: false }
-                ];
-            }]);
-    };
+    // create the controllers module
+    var controllers = angular.module('myapp-controllers', dependencies);
 
-    return {
-        addControllers: addControllers
-    };
+    // add each controller
+    controllers.
+        controller('NavCtrl', ['$scope', '$log', function ($scope, $log) {
+            $log.info('NavCtrl()');
+
+            $scope.items = [
+                { title: 'Home', url: '#', selected: true },
+                { title: 'About', url: '#/about', selected: false },
+                { title: 'Contact', url: '#/contact', selected: false }
+            ];
+        }]);
+
+    return controllers;
 });
