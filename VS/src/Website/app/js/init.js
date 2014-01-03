@@ -20,14 +20,17 @@ define('init', ['module', 'angular', 'myapp'], function (module, angular, app) {
     //console.log('define: ' + module.id); // debug define() calls
 
     // AngularJS bootstrap dependencies
-    var dependencies = ['myapp'];
+    var dependencies = [app.id];
 
     // bootstrap the app to the document
     // *This could be scoped to a specific element in the page.
     angular.bootstrap(document, dependencies);
 
     // return the modified app
-    return app;
+    return {
+        id: module.id,
+        module: app
+    };
 });
 
 // require the initialization module (run it and all of its dependencies)

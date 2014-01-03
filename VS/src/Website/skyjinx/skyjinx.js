@@ -18,7 +18,10 @@ define('skyjinx', ['module'], function (module) {
 
     //console.log('define: ' + module.id); // debug define() calls
 
-    return {};
+    return {
+        id: module.id,
+        module: {}
+    };
 });
 ///#source 1 1 /skyjinx/bootstrap/js/bootstrap.js
 // <copyright file="bootstrap.js" company="Eric Swanson">
@@ -84,6 +87,9 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
                 templateUrl: 'skyjinx/bootstrap/html/navbar.html'
             };
         });
-        
-    return bootstrap;
+
+    return {
+        id: module.id,
+        module: bootstrap
+    };
 });

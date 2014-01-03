@@ -17,5 +17,8 @@ define('skyjinx', ['module'], function (module) {
 
     //console.log('define: ' + module.id); // debug define() calls
 
-    return {};
+    return {
+        id: module.id,
+        module: {}
+    };
 });

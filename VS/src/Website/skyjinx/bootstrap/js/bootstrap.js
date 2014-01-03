@@ -61,6 +61,9 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
                 templateUrl: 'skyjinx/bootstrap/html/navbar.html'
             };
         });
-        
-    return bootstrap;
+
+    return {
+        id: module.id,
+        module: bootstrap
+    };
 });

@@ -37,5 +37,8 @@ define('myapp-routes', ['module', 'angular','angular-route'], function (module, 
             });
     }]);
 
-    return routes;
+    return {
+        id: module.id,
+        module: routes
+    };
 });

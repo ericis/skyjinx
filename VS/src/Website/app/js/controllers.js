@@ -36,5 +36,8 @@ define('myapp-controllers', ['module', 'angular'], function (module, angular) {
             ];
         }]);
 
-    return controllers;
+    return {
+        id: module.id,
+        module: controllers
+    };
 });

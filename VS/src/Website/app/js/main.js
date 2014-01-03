@@ -37,7 +37,10 @@ define('myapp-controllers', ['module', 'angular'], function (module, angular) {
             ];
         }]);
 
-    return controllers;
+    return {
+        id: module.id,
+        module: controllers
+    };
 });
 ///#source 1 1 /app/js/routes.js
 // <copyright file="routes.js" company="Eric Swanson">
@@ -79,7 +82,10 @@ define('myapp-routes', ['module', 'angular','angular-route'], function (module, 
             });
     }]);
 
-    return routes;
+    return {
+        id: module.id,
+        module: routes
+    };
 });
 ///#source 1 1 /app/js/app.js
 // <copyright file="app.js" company="Eric Swanson">
@@ -100,18 +106,21 @@ define('myapp-routes', ['module', 'angular','angular-route'], function (module, 
     - myapp-routes: Initializes this application's routes.
     - myapp-controllers: Initializes this application's controllers.
 */
-define('myapp', ['module', 'angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (module, angular) {
+define('myapp', ['module', 'angular', 'skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'], function (module, angular, bootstrap, routes, controllers) {
     'use strict';
 
     //console.log('define: ' + module.id); // debug define() calls
 
     // Your app's dependencies
-    var dependencies = ['skyjinx-bootstrap', 'myapp-routes', 'myapp-controllers'];
+    var dependencies = [bootstrap.id, routes.id, controllers.id];
 
     // create the app module
     var app = angular.module(module.id, dependencies);
 
-    return app;
+    return {
+        id: module.id,
+        module: app
+    };
 });
 ///#source 1 1 /app/js/init.js
 // <copyright file="init.js" company="Eric Swanson">
@@ -136,14 +145,17 @@ define('init', ['module', 'angular', 'myapp'], function (module, angular, app) {
     //console.log('define: ' + module.id); // debug define() calls
 
     // AngularJS bootstrap dependencies
-    var dependencies = ['myapp'];
+    var dependencies = [app.id];
 
     // bootstrap the app to the document
     // *This could be scoped to a specific element in the page.
     angular.bootstrap(document, dependencies);
 
     // return the modified app
-    return app;
+    return {
+        id: module.id,
+        module: app
+    };
 });
 
 // require the initialization module (run it and all of its dependencies)
