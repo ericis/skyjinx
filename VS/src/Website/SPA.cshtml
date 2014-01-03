@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkyJinx</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
     <link rel="stylesheet" href="~/app/css/main.min.css" />
     @*<link rel="shortcut icon" href="~/app/favicon.png" type="image/x-icon" />*@
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -27,7 +29,8 @@
                 'bootstrap': ['@Url.Require("~/Scripts/bootstrap.min.js")'],
                 'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min', '@Url.Require("~/Scripts/angular.min.js")'],
                 'angular-route': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-route.min', '@Url.Require("~/Scripts/angular-route.min.js")'],
-                'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-animate.min', '@Url.Require("~/Scripts/angular-animate.min.js")']
+                'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-animate.min', '@Url.Require("~/Scripts/angular-animate.min.js")'],
+                'skyjinx': ['@Url.Require("~/skyjinx/skyjinx.min.js")']
             },
             shim: {
                 'bootstrap': {
@@ -41,6 +44,12 @@
                 },
                 'angular-animate': {
                     deps: ['angular']
+                },
+                'skyjinx': {
+                    deps: ['bootstrap','angular']
+                },
+                'skyjinx-ng-bs': {
+                    deps: ['skyjinx']
                 }
             }
         };
