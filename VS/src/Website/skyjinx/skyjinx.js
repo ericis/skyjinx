@@ -1,4 +1,4 @@
-﻿///#source 1 1 /skyjinx/bootstrap/js/core.js
+﻿///#source 1 1 /skyjinx/js/core.js
 // <copyright file="core.js" company="Eric Swanson">
 // Copyright (C) 2014 Eric Swanson
 //      

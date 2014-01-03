@@ -400,7 +400,7 @@
     </Content>
     <Content Include="skyjinx\bootstrap\html\navbar.html" />
     <Content Include="skyjinx\bootstrap\html\container.html" />
-    <Content Include="skyjinx\bootstrap\js\core.js" />
+    <Content Include="skyjinx\js\core.js" />
     <Content Include="skyjinx\bootstrap\js\bootstrap.js" />
     <Content Include="skyjinx\skyjinx.js">
       <DependentUpon>skyjinx.js.bundle</DependentUpon>
