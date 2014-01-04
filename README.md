@@ -1,6 +1,4 @@
-SkyJinx
-=======
-![SkyJinx Logo](/VS/src/Website/app/img/skyjinx_256x256.png "SkyJinx Logo")
+# SkyJinx <img src="/VS/src/Website/app/img/skyjinx_128x128.png" align="middle" /> #
 
 SkyJinx is an opinionated, flexible web framework using the latest technologies to build web applications quickly.
 
