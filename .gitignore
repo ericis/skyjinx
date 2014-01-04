@@ -157,3 +157,4 @@ $RECYCLE.BIN/
 
 # Custom ignore paths
 /VS/.publish
+/VS/src/_ref

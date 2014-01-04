@@ -14,7 +14,7 @@
     - angular: Initializes AngularJS.
     - angular-route: Initializes the AngularJS ngRoute module.
 */
-define('myapp-routes', ['module', 'angular','angular-route'], function (module, angular) {
+define('myapp-routes', ['module', 'angular', 'angular-route'], function (module, angular) {
     'use strict';
 
     //console.log('define: ' + module.id); // debug define() calls

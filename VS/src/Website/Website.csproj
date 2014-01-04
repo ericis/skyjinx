@@ -398,16 +398,10 @@
     <Content Include="app\js\main.min.js">
       <DependentUpon>main.js.bundle</DependentUpon>
     </Content>
-    <Content Include="skyjinx\bootstrap\html\navbar.html" />
     <Content Include="skyjinx\bootstrap\html\container.html" />
-    <Content Include="skyjinx\js\core.js" />
-    <Content Include="skyjinx\bootstrap\js\bootstrap.js" />
-    <Content Include="skyjinx\skyjinx.js">
-      <DependentUpon>skyjinx.js.bundle</DependentUpon>
-    </Content>
-    <Content Include="skyjinx\skyjinx.min.js">
-      <DependentUpon>skyjinx.js.bundle</DependentUpon>
-    </Content>
+    <Content Include="skyjinx\bootstrap\html\navbar.html" />
+    <Content Include="skyjinx\skyjinx.js" />
+    <Content Include="skyjinx\skyjinx.min.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>
@@ -426,10 +420,7 @@
     <Content Include="app\js\main.min.js.map">
       <DependentUpon>main.js.bundle</DependentUpon>
     </Content>
-    <None Include="skyjinx\skyjinx.js.bundle" />
-    <Content Include="skyjinx\skyjinx.min.js.map">
-      <DependentUpon>skyjinx.js.bundle</DependentUpon>
-    </Content>
+    <Content Include="skyjinx\skyjinx.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

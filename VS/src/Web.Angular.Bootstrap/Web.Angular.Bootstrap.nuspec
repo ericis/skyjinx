@@ -9,10 +9,10 @@
     <projectUrl>https://github.com/ericis/skyjinx</projectUrl>
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <title>SkyJinx ASP.NET MVC Library</title>
+    <title>SkyJinx AngularJS and Bootstrap Library</title>
     <description>$description$</description>
     <summary>
-      SkyJinx.Web.Mvc open source library for ASP.NET MVC.
+      SkyJinx.Web.Angular.Bootstrap is an open source library for web applications.
     </summary>
     <releaseNotes>
       $version$: Initial release.
@@ -26,16 +26,14 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     </copyright>
-    <tags>SkyJinx MVC Web ASP.NET</tags>
+    <tags>SkyJinx Web AngularJS Bootstrap RequireJS MVC ASP.NET</tags>
     <language>en-US</language>
     <dependencies>
-      <dependency id="Microsoft.AspNet.Mvc" version="5.0.0" />
-      <dependency id="EnterpriseLibrary.SemanticLogging" version="1.0.1304.0" />
+      <dependency id="RequireJS" version="2.1.9" />
+      <dependency id="angularjs" version="1.2.2" />
+      <dependency id="bootstrap" version="3.0.3" />
+      <dependency id="FontAwesome" version="4.0.3.1" />
+      <dependency id="jQuery" version="2.0.3" />
     </dependencies>
-    <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="" />
-      <frameworkAssembly assemblyName="System.Web" targetFramework="" />
-      <frameworkAssembly assemblyName="System.Web.Routing" targetFramework="" />
-    </frameworkAssemblies>
   </metadata>
 </package>

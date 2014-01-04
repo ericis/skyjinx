@@ -1,0 +1,18 @@
+﻿<div class="navbar" ng-class="{'navbar-default':!flags.isInverted, 'navbar-inverse':flags.isInverted, 'navbar-fixed-top':flags.isFixed}" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">{{toggle.title}}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{brand.title}}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="item in items" ng-class="{active:item.selected}"><a href="{{item.url}}">{{item.title}}</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div><!-- /.navbar -->
