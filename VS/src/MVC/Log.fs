@@ -22,9 +22,9 @@ type ILog =
     /// Logs when areas are registered
     abstract RegisterAreas : unit -> unit
     /// Logs when a filter is registered
-    abstract RegisterFilter : string -> unit
+    abstract RegisterFilter : name:string -> unit
     /// Logs when a route is registered
-    abstract RegisterRoute : string * string -> unit
+    abstract RegisterRoute : name:string * path:string -> unit
     /// Logs the application shutdown event
     abstract Shutdown : unit -> unit
 
@@ -36,7 +36,7 @@ type ILogInitializer =
 /// Contract for disposing of logging
 type ILogDisposer =
     /// Disposes of the logging implementation
-    abstract Dispose : ILog -> unit
+    abstract Dispose : log:ILog -> unit
 
 /// The default MVC logging event source.
 [<EventSource(Name = "SkyJinx-Web-MVC")>]
@@ -70,9 +70,9 @@ type MvcEventSource private() =
             this.WriteEvent(60, name)
             
     /// Logs when a route is registered
-    [<Event(70, Message = "Registered MVC Route \"{0}\": {1}", Level = EventLevel.Informational)>]
+    [<Event(70, Message = "Registered ASP.NET Route \"{0}\": {1}", Level = EventLevel.Informational)>]
     member this.RegisterRoute(name:string, path:string) =
-        Debug.WriteLine(sprintf "Registered MVC Route \"%s\": %s" name path)
+        Debug.WriteLine(sprintf "Registered ASP.NET Route \"%s\": %s" name path)
         if (this.IsEnabled()) then
             this.WriteEvent(70, name, path)
             

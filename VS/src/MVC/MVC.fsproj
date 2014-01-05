@@ -65,9 +65,16 @@
       <Link>SharedAssemblyFileVersion.fs</Link>
     </Compile>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Configuration.fs" />
     <Compile Include="Log.fs" />
-    <Compile Include="App.fs" />
+    <Compile Include="UrlExtensions.fs" />
+    <Compile Include="SPA.fs" />
     <None Include="MVC.fsproj.nuspec" />
+    <Compile Include="AppEvents.fs" />
+    <Compile Include="Areas.fs" />
+    <Compile Include="Filters.fs" />
+    <Compile Include="Routes.fs" />
+    <Compile Include="App.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.SemanticLogging">
@@ -88,6 +95,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Web" />
@@ -116,6 +124,7 @@
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Import Project="..\..\.build\VersionNumber.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
