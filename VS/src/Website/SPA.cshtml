@@ -17,42 +17,6 @@
 </head>
 <body>
     <div ng-view></div>
-    <script>
-        /*
-          - paths: RequireJS accepts an array of paths for each script in the order of download priority.
-                   Usually, this order is one or more CDN paths followed by a local fall-back path in case the CDN is down.
-                   *The "//" prefix avoids the problem of specifying 'http' vs. 'https' for your app's needs (i.e. CDN uses the same HTTP scheme as your app)
-        */
-        var require = {
-            paths: {
-                'bootstrap': ['@Url.Require("~/Scripts/bootstrap.min.js")'],
-                'angular': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min', '@Url.Require("~/Scripts/angular.min.js")'],
-                'angular-route': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-route.min', '@Url.Require("~/Scripts/angular-route.min.js")'],
-                'angular-animate': ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular-animate.min', '@Url.Require("~/Scripts/angular-animate.min.js")'],
-                'skyjinx': ['@Url.Require("~/skyjinx/skyjinx.min.js")'],
-                'skyjinx-bootstrap': ['@Url.Require("~/skyjinx/skyjinx.min.js")'],
-                // optional
-                'jquery': ['//code.jquery.com/jquery-2.0.3.min', '@Url.Require("~/Scripts/jquery-2.0.3.min.js")'],
-            },
-            shim: {
-                'bootstrap': {
-                    deps: ['jquery']
-                },
-                'angular': {
-                    exports: 'angular' // window.angular global
-                },
-                'angular-route': {
-                    deps: ['angular']
-                },
-                'angular-animate': {
-                    deps: ['angular']
-                },
-                'skyjinx-bootstrap': {
-                    deps: ['bootstrap', 'angular']
-                }
-            }
-        };
-    </script>
-    <script data-main="@Url.Require("~/app/js/main.min.js")" src="~/Scripts/require.js"></script>
+    @Html.RequireJS("skyjinx")
 </body>
 </html>

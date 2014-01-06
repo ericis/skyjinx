@@ -402,7 +402,9 @@
     <Content Include="skyjinx\bootstrap\html\navbar.html" />
     <Content Include="skyjinx\skyjinx.js" />
     <Content Include="skyjinx\skyjinx.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>
   <ItemGroup>

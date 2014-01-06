@@ -18,4 +18,8 @@ type SpaController() =
     
     /// The index action for the SPA
     member this.Index() =
-        this.View("~/SPA.cshtml")
+        let spaConfig = SkyJinx.Web.Mvc.Configuration.SpaSection.GetSection("skyjinx")
+        
+        match spaConfig with
+        | null -> this.View("~/SPA.cshtml")
+        | _ -> this.View(spaConfig.ViewPath)

@@ -4,135 +4,7 @@ open System
 open System.Configuration
 open System.Web.Configuration
 
-type ContentElement() =
-    inherit ConfigurationElement()
 
-    [<ConfigurationProperty("name", DefaultValue = "", IsRequired = true, IsKey = true)>]
-    member x.Name
-        with get() = string x.["name"]
-        and set(value:string) = x.["name"] <- value
-    
-    [<ConfigurationProperty("path", DefaultValue = "", IsRequired = true, IsKey = false)>]
-    member x.Path
-        with get() = string x.["path"]
-        and set(value:string) = x.["path"] <- value
-
-type ContentElementCollection() =
-    inherit ConfigurationElementCollection()
-
-    member x.Item
-        with get(index) = 
-            x.BaseGet(index) :?> ContentElement
-        and set index value =
-
-            if Object.ReferenceEquals(null, x.BaseGet(index)) then
-                x.BaseRemoveAt(index)
-            
-            x.BaseAdd(index, value)
-
-    member x.this
-        with get(index:int) = 
-            x.Item(index)
-        and set index (value:ContentElement) =
-            x.Item(index) <- value
-
-    override x.GetElementKey(element:ConfigurationElement) = 
-        let script = element :?> ContentElement
-        
-        box script.Name
-
-    override x.CreateNewElement() =
-        (new ContentElement()) :> ConfigurationElement
-
-    member x.Add(script:ContentElement) =
-        x.BaseAdd(script)
-
-    member x.Clear() =
-        x.BaseClear()
-
-type ContentGroupElement() =
-    inherit ConfigurationElement()
-
-    [<ConfigurationProperty("name", DefaultValue = "", IsRequired = true, IsKey = true)>]
-    member x.Name
-        with get() = string x.["name"]
-        and set(value:string) = x.["name"] <- value
-    
-    [<ConfigurationProperty("path", DefaultValue = "", IsRequired = true, IsKey = false)>]
-    member x.Path
-        with get() = string x.["path"]
-        and set(value:string) = x.["path"] <- value
-    
-    [<ConfigurationProperty("", IsRequired = false, IsDefaultCollection = true)>]
-    [<ConfigurationCollection(typeof<ContentElementCollection>, AddItemName = "item")>]
-    member x.Items
-        with get() = x.[""] :?> ContentElementCollection
-
-type ContentGroupCollection() =
-    inherit ConfigurationElementCollection()
-
-    member x.Item
-        with get(index) = 
-            x.BaseGet(index) :?> ContentGroupElement
-        and set index (value:ContentGroupElement) =
-
-            if Object.ReferenceEquals(null, x.BaseGet(index)) then
-                x.BaseRemoveAt(index)
-            
-            x.BaseAdd(index, value)
-
-    member x.this
-        with get(index:int) = 
-            x.Item(index)
-        and set index (value:ContentGroupElement) =
-            x.Item(index) <- value
-
-    override x.GetElementKey(element:ConfigurationElement) = 
-        let group = element :?> ContentGroupElement
-        
-        box group.Name
-
-    override x.CreateNewElement() =
-        (new ContentGroupElement()) :> ConfigurationElement
-
-    member x.Add(script:ContentGroupElement) =
-        x.BaseAdd(script)
-
-    member x.Clear() =
-        x.BaseClear()
-
-type ContentGroupsElement() =
-    inherit ConfigurationElement()
-
-    [<ConfigurationProperty("publicRootPath", IsRequired = true, IsKey = false)>]
-    member x.PublicRootPath
-        with get() = string x.["publicRootPath"]
-        and set(value:string) = x.["publicRootPath"] <- box value
-    
-    [<ConfigurationProperty("", IsRequired = false, IsDefaultCollection = true)>]
-    [<ConfigurationCollection(typeof<ContentGroupCollection>, AddItemName = "group")>]
-    member x.Groups
-        with get() = x.[""] :?> ContentGroupCollection
-        
-[<AllowNullLiteralAttribute>]
-type ContentSection() =
-    inherit ConfigurationSection()
-    
-    static member GetSection(xPathRoot:string) =
-        let section = ConfigurationManager.GetSection(sprintf "%s/content" xPathRoot)
-        match section with
-        | null -> null
-        | _ -> section :?> ContentSection
-        
-    [<ConfigurationProperty("scripts", IsRequired = true, IsKey = false)>]
-    member x.Scripts
-        with get() = x.["scripts"] :?> ContentGroupsElement
-        and set(value:ContentGroupsElement) = x.["scripts"] <- value
-        
-    [<ConfigurationProperty("styles", IsRequired = true, IsKey = false)>]
-    member x.Styles
-        with get() = x.["styles"] :?> ContentGroupsElement
-        and set(value:ContentGroupsElement) = x.["styles"] <- value
 
 [<AbstractClass>]
 type NavigationRouteElementBase() =
@@ -271,28 +143,266 @@ type NavigationSection() =
     member x.Routes
         with get() = x.["routes"] :?> NavigationRoutesElement
         and set(value:NavigationRoutesElement) = x.["routes"] <- value
-        
+
 [<AllowNullLiteralAttribute>]
-type SiteSection() =
+type SpaSection() =
     inherit ConfigurationSection()
     
     static member GetSection(xPathRoot:string) =
-        let section = ConfigurationManager.GetSection(sprintf "%s/site" xPathRoot)
+        let section = ConfigurationManager.GetSection(sprintf "%s/spa" xPathRoot)
         match section with
         | null -> null
-        | _ -> section :?> SiteSection
+        | _ -> section :?> SpaSection
+        
+    [<ConfigurationProperty("view", IsRequired = true, IsKey = false)>]
+    member x.ViewPath
+        with get() = x.["view"] :?> string
+        and set(value:string) = x.["view"] <- value
 
-    [<ConfigurationProperty("title", IsRequired = true, IsKey = true)>]
-    member x.Title
-        with get() = x.["title"] :?> string
-        and set(value:string) = x.["title"] <- value
+type ContentScriptPathElement() =
+    inherit ConfigurationElement()
 
-    [<ConfigurationProperty("description", IsRequired = true, IsKey = false)>]
-    member x.Description
-        with get() = x.["description"] :?> string
-        and set(value:string) = x.["description"] <- value
+    [<ConfigurationProperty("url", DefaultValue = "", IsRequired = true, IsKey = true)>]
+    member x.Url
+        with get() = string x.["url"]
+        and set(value:string) = x.["url"] <- value
 
-    [<ConfigurationProperty("copyright", IsRequired = true, IsKey = false)>]
-    member x.Copyright
-        with get() = x.["copyright"] :?> string
-        and set(value:string) = x.["copyright"] <- value
+type ContentScriptPathCollection() =
+    inherit ConfigurationElementCollection()
+
+    member x.Item
+        with get(index) = 
+            x.BaseGet(index) :?> ContentScriptPathElement
+        and set index (value:ContentScriptPathElement) =
+
+            if Object.ReferenceEquals(null, x.BaseGet(index)) then
+                x.BaseRemoveAt(index)
+            
+            x.BaseAdd(index, value)
+
+    member x.this
+        with get(index:int) = 
+            x.Item(index)
+        and set index (value:ContentScriptPathElement) =
+            x.Item(index) <- value
+
+    override x.GetElementKey(element:ConfigurationElement) = 
+        let path = element :?> ContentScriptPathElement
+        
+        box path.Url
+
+    override x.CreateNewElement() =
+        (new ContentScriptPathElement()) :> ConfigurationElement
+
+    member x.Add(script:ContentScriptPathElement) =
+        x.BaseAdd(script)
+
+    member x.Clear() =
+        x.BaseClear()
+
+type ContentScriptElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("name", DefaultValue = "", IsRequired = true, IsKey = true)>]
+    member x.Name
+        with get() = string x.["name"]
+        and set(value:string) = x.["name"] <- value
+    
+    [<ConfigurationProperty("url", DefaultValue = "", IsRequired = false, IsKey = false)>]
+    member x.Url
+        with get() = string x.["url"]
+        and set(value:string) = x.["url"] <- value
+
+    [<ConfigurationProperty("", IsRequired = false, IsDefaultCollection = true)>]
+    [<ConfigurationCollection(typeof<ContentScriptPathCollection>, AddItemName = "path")>]
+    member x.Paths
+        with get() = x.[""] :?> ContentScriptPathCollection
+
+type ContentScriptCollection() =
+    inherit ConfigurationElementCollection()
+
+    member x.Item
+        with get(index) = 
+            x.BaseGet(index) :?> ContentScriptElement
+        and set index (value:ContentScriptElement) =
+
+            if Object.ReferenceEquals(null, x.BaseGet(index)) then
+                x.BaseRemoveAt(index)
+            
+            x.BaseAdd(index, value)
+
+    member x.this
+        with get(index:int) = 
+            x.Item(index)
+        and set index (value:ContentScriptElement) =
+            x.Item(index) <- value
+
+    override x.GetElementKey(element:ConfigurationElement) = 
+        let script = element :?> ContentScriptElement
+        
+        box script.Name
+
+    override x.CreateNewElement() =
+        (new ContentScriptElement()) :> ConfigurationElement
+
+    member x.Add(script:ContentScriptElement) =
+        x.BaseAdd(script)
+
+    member x.Clear() =
+        x.BaseClear()
+
+type ContentScriptsElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("", IsRequired = false, IsDefaultCollection = true)>]
+    [<ConfigurationCollection(typeof<ContentScriptCollection>, AddItemName = "script")>]
+    member x.Scripts
+        with get() = x.[""] :?> ContentScriptCollection
+
+[<AllowNullLiteralAttribute>]
+type ContentSection() =
+    inherit ConfigurationSection()
+    
+    static member GetSection(xPathRoot:string) =
+        let section = ConfigurationManager.GetSection(sprintf "%s/content" xPathRoot)
+        match section with
+        | null -> null
+        | _ -> section :?> ContentSection
+        
+    [<ConfigurationProperty("scripts", IsRequired = true, IsKey = false)>]
+    member x.Scripts
+        with get() = x.["scripts"] :?> ContentScriptsElement
+        and set(value:ContentScriptsElement) = x.["scripts"] <- value
+
+type RequireJsScriptDependencyElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("name", DefaultValue = "", IsRequired = true, IsKey = true)>]
+    member x.Name
+        with get() = string x.["name"]
+        and set(value:string) = x.["name"] <- value
+    
+type RequireJsScriptDependencyCollection() =
+    inherit ConfigurationElementCollection()
+
+    member x.Item
+        with get(index) = 
+            x.BaseGet(index) :?> RequireJsScriptDependencyElement
+        and set index (value:RequireJsScriptDependencyElement) =
+
+            if Object.ReferenceEquals(null, x.BaseGet(index)) then
+                x.BaseRemoveAt(index)
+            
+            x.BaseAdd(index, value)
+
+    member x.this
+        with get(index:int) = 
+            x.Item(index)
+        and set index (value:RequireJsScriptDependencyElement) =
+            x.Item(index) <- value
+
+    override x.GetElementKey(element:ConfigurationElement) = 
+        let script = element :?> RequireJsScriptDependencyElement
+        
+        box script.Name
+
+    override x.CreateNewElement() =
+        (new RequireJsScriptDependencyElement()) :> ConfigurationElement
+
+    member x.Add(script:RequireJsScriptDependencyElement) =
+        x.BaseAdd(script)
+
+    member x.Clear() =
+        x.BaseClear()
+
+type ContentScriptDependenciesElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("", IsRequired = false, IsDefaultCollection = true)>]
+    [<ConfigurationCollection(typeof<RequireJsScriptDependencyCollection>, AddItemName = "script")>]
+    member x.Scripts
+        with get() = x.[""] :?> RequireJsScriptDependencyCollection
+
+type RequireJsScriptElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("name", DefaultValue = "", IsRequired = true, IsKey = true)>]
+    member x.Name
+        with get() = string x.["name"]
+        and set(value:string) = x.["name"] <- value
+    
+    [<ConfigurationProperty("exports", DefaultValue = "", IsRequired = false, IsKey = false)>]
+    member x.Exports
+        with get() = string x.["exports"]
+        and set(value:string) = x.["exports"] <- value
+        
+    [<ConfigurationProperty("dependsOn", IsRequired = false, IsKey = false)>]
+    member x.Dependencies
+        with get() = x.["dependsOn"] :?> ContentScriptDependenciesElement
+        and set(value:ContentScriptDependenciesElement) = x.["dependsOn"] <- value
+
+type RequireJsScriptCollection() =
+    inherit ConfigurationElementCollection()
+
+    member x.Item
+        with get(index) = 
+            x.BaseGet(index) :?> RequireJsScriptElement
+        and set index (value:RequireJsScriptElement) =
+
+            if Object.ReferenceEquals(null, x.BaseGet(index)) then
+                x.BaseRemoveAt(index)
+            
+            x.BaseAdd(index, value)
+
+    member x.this
+        with get(index:int) = 
+            x.Item(index)
+        and set index (value:RequireJsScriptElement) =
+            x.Item(index) <- value
+
+    override x.GetElementKey(element:ConfigurationElement) = 
+        let script = element :?> RequireJsScriptElement
+        
+        box script.Name
+
+    override x.CreateNewElement() =
+        (new RequireJsScriptElement()) :> ConfigurationElement
+
+    member x.Add(script:RequireJsScriptElement) =
+        x.BaseAdd(script)
+
+    member x.Clear() =
+        x.BaseClear()
+
+type RequireJsScriptsElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("", IsRequired = false, IsDefaultCollection = true)>]
+    [<ConfigurationCollection(typeof<RequireJsScriptCollection>, AddItemName = "script")>]
+    member x.Scripts
+        with get() = x.[""] :?> RequireJsScriptCollection
+
+[<AllowNullLiteralAttribute>]
+type RequireJsSection() =
+    inherit ConfigurationSection()
+    
+    static member GetSection(xPathRoot:string) =
+        let section = ConfigurationManager.GetSection(sprintf "%s/requirejs" xPathRoot)
+        match section with
+        | null -> null
+        | _ -> section :?> RequireJsSection
+        
+    [<ConfigurationProperty("scriptName", IsRequired = true, IsKey = false)>]
+    member x.ScriptName
+        with get() = x.["scriptName"] :?> string
+        and set(value:string) = x.["scriptName"] <- value
+        
+    [<ConfigurationProperty("mainScriptName", IsRequired = true, IsKey = false)>]
+    member x.MainScriptName
+        with get() = x.["mainScriptName"] :?> string
+        and set(value:string) = x.["mainScriptName"] <- value
+        
+    [<ConfigurationProperty("scripts", IsRequired = false, IsKey = false)>]
+    member x.Scripts
+        with get() = x.["scripts"] :?> RequireJsScriptsElement
+        and set(value:RequireJsScriptsElement) = x.["scripts"] <- value
