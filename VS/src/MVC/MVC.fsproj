@@ -68,13 +68,14 @@
     <Compile Include="Configuration.fs" />
     <Compile Include="Log.fs" />
     <Compile Include="UrlExtensions.fs" />
+    <Compile Include="HtmlExtensions.fs" />
     <Compile Include="SPA.fs" />
-    <None Include="MVC.fsproj.nuspec" />
     <Compile Include="AppEvents.fs" />
     <Compile Include="Areas.fs" />
     <Compile Include="Filters.fs" />
     <Compile Include="Routes.fs" />
     <Compile Include="App.fs" />
+    <None Include="MVC.fsproj.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.SemanticLogging">
