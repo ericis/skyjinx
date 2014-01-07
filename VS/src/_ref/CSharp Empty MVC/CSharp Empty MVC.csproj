@@ -7,19 +7,19 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{60079928-2056-4845-BA0E-DD2B37AEFDB1}</ProjectGuid>
+    <ProjectGuid>{2A1C8C70-D9E7-477D-B6E5-B849953F2BFD}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SkyJinx.Web.Host</RootNamespace>
-    <AssemblyName>SkyJinx.Web.Host</AssemblyName>
+    <RootNamespace>CSharp_Empty_MVC</RootNamespace>
+    <AssemblyName>CSharp Empty MVC</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,9 +41,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -62,36 +59,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages">
-      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Deployment">
-      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Razor">
-      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Helpers">
-      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc">
-      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
+    <Content Include="packages.config" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\html\contact.html" />
-    <Content Include="app\html\about.html" />
-    <Content Include="app\html\controls\nav.html" />
-    <Content Include="app\html\index.html" />
-    <Content Include="app\img\favicon.png" />
-    <Content Include="app\img\skyjinx-inverted_128x128.png" />
-    <Content Include="app\img\skyjinx_128x128.png" />
-    <Content Include="app\img\skyjinx_256x256.png" />
-    <Content Include="app\js\directives.js" />
-    <Content Include="app\js\routes.js" />
+    <Content Include="app\main.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -100,24 +86,10 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
-    <Content Include="app\css\fonts.css" />
-    <Content Include="app\css\core.css" />
-    <Content Include="app\css\main.css">
-      <DependentUpon>main.css.bundle</DependentUpon>
-    </Content>
-    <Content Include="app\css\main.min.css">
-      <DependentUpon>main.css.bundle</DependentUpon>
-    </Content>
-    <Content Include="app\js\controllers.js" />
-    <Content Include="app\js\app.js" />
-    <Content Include="app\js\init.js" />
-    <Content Include="app\js\main.js">
-      <DependentUpon>main.js.bundle</DependentUpon>
-    </Content>
-    <Content Include="app\js\main.min.js">
-      <DependentUpon>main.js.bundle</DependentUpon>
-    </Content>
+    <Content Include="index.html" />
+    <Content Include="partials\contact.html" />
+    <Content Include="partials\about.html" />
+    <Content Include="partials\index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -397,55 +369,15 @@
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="skyjinx\bootstrap\html\container.html" />
-    <Content Include="skyjinx\bootstrap\html\container.min.html" />
-    <Content Include="skyjinx\bootstrap\html\nav.html" />
-    <Content Include="skyjinx\bootstrap\html\nav.min.html" />
     <Content Include="skyjinx\bootstrap\html\navbar.html" />
-    <Content Include="skyjinx\bootstrap\html\navbar.min.html" />
-    <Content Include="skyjinx\bootstrap\js\templates.js" />
-    <Content Include="skyjinx\js\skyjinx.js" />
-    <Content Include="skyjinx\js\skyjinx.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="skyjinx\skyjinx.js" />
+    <Content Include="skyjinx\skyjinx.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="skyjinx\skyjinx.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
-    <Content Include="SPA.cshtml" />
-    <None Include="app\css\main.css.bundle" />
-    <None Include="app\js\main.js.bundle" />
-    <Content Include="app\js\main.min.js.map">
-      <DependentUpon>main.js.bundle</DependentUpon>
-    </Content>
-    <Content Include="Scripts\errors.json" />
-    <Content Include="Scripts\angular-touch.min.js.map" />
-    <Content Include="Scripts\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Scripts\angular-resource.min.js.map" />
-    <Content Include="Scripts\angular-loader.min.js.map" />
-    <Content Include="Scripts\angular-cookies.min.js.map" />
-    <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\jquery-2.0.3.min.map" />
-    <Content Include="skyjinx\js\skyjinx.min.js.map" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MVC\MVC.fsproj">
-      <Project>{6830ff2f-9e56-40b2-94e9-dcd0605549ef}</Project>
-      <Name>MVC</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -460,9 +392,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56953</DevelopmentServerPort>
+          <DevelopmentServerPort>13170</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56953/</IISUrl>
+          <IISUrl>http://localhost:13170/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
