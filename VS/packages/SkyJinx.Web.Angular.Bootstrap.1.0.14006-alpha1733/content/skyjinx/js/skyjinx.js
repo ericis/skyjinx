@@ -93,6 +93,23 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
                 }],
                 templateUrl: 'skyjinx/bootstrap/html/navbar.html'
             };
+        }).
+        directive('bsNav', function () {
+            return {
+                restrict: 'EA',
+                transclude: true,
+                scope: {
+                    alignLeft: '@',
+                    alignRight: '@'
+                },
+                controller: ['$scope', '$log', function ($scope, $log) {
+                    $scope.flags = {
+                        isAlignedLeft: angular.isDefined($scope.alignLeft) ? $scope.$eval($scope.alignLeft) : false,
+                        isAlignedRight: angular.isDefined($scope.alignRight) ? $scope.$eval($scope.alignRight) : false
+                    };
+                }],
+                templateUrl: 'skyjinx/bootstrap/html/nav.html'
+            };
         });
 
     return {

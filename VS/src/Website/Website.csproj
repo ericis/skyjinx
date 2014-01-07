@@ -98,9 +98,23 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\css\fonts.css" />
+    <Content Include="app\css\core.css" />
+    <Content Include="app\css\main.css">
+      <DependentUpon>main.css.bundle</DependentUpon>
+    </Content>
+    <Content Include="app\css\main.min.css">
+      <DependentUpon>main.css.bundle</DependentUpon>
+    </Content>
+    <Content Include="app\js\controllers.js" />
+    <Content Include="app\js\app.js" />
+    <Content Include="app\js\init.js" />
+    <Content Include="app\js\main.js">
+      <DependentUpon>main.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="app\js\main.min.js">
+      <DependentUpon>main.js.bundle</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -120,16 +134,6 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\errors.json" />
-    <Content Include="Scripts\angular-touch.min.js.map" />
-    <Content Include="Scripts\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Scripts\angular-resource.min.js.map" />
-    <Content Include="Scripts\angular-loader.min.js.map" />
-    <Content Include="Scripts\angular-cookies.min.js.map" />
-    <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
@@ -377,52 +381,49 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
-    <Content Include="app\css\fonts.css" />
-    <Content Include="app\css\core.css" />
-    <Content Include="app\css\main.css">
-      <DependentUpon>main.css.bundle</DependentUpon>
-    </Content>
-    <Content Include="app\css\main.min.css">
-      <DependentUpon>main.css.bundle</DependentUpon>
-    </Content>
-    <Content Include="app\js\controllers.js" />
-    <Content Include="app\js\app.js" />
-    <Content Include="app\js\init.js" />
-    <Content Include="app\js\main.js">
-      <DependentUpon>main.js.bundle</DependentUpon>
-    </Content>
-    <Content Include="app\js\main.min.js">
-      <DependentUpon>main.js.bundle</DependentUpon>
-    </Content>
     <Content Include="skyjinx\bootstrap\html\container.html" />
+    <Content Include="skyjinx\bootstrap\html\nav.html" />
     <Content Include="skyjinx\bootstrap\html\navbar.html" />
-    <Content Include="skyjinx\skyjinx.js" />
-    <Content Include="skyjinx\skyjinx.min.js" />
+    <Content Include="skyjinx\js\skyjinx.js" />
+    <Content Include="skyjinx\js\skyjinx.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Scripts\jquery-2.0.3.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\FontAwesome.otf" />
     <Content Include="SPA.cshtml" />
     <None Include="app\css\main.css.bundle" />
     <None Include="app\js\main.js.bundle" />
     <Content Include="app\js\main.min.js.map">
       <DependentUpon>main.js.bundle</DependentUpon>
     </Content>
-    <Content Include="skyjinx\skyjinx.min.js.map" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="skyjinx\js\skyjinx.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
