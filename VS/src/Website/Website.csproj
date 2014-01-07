@@ -81,7 +81,7 @@
   <ItemGroup>
     <Content Include="app\html\contact.html" />
     <Content Include="app\html\about.html" />
-    <Content Include="app\html\nav.html" />
+    <Content Include="app\html\controls\nav.html" />
     <Content Include="app\html\index.html" />
     <Content Include="app\img\favicon.png" />
     <Content Include="app\img\skyjinx-inverted_128x128.png" />

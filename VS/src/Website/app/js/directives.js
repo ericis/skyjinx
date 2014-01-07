@@ -30,7 +30,7 @@ define('myapp-directives', ['module', 'angular'], function (module, angular) {
             return {
                 restrict: 'E',
                 transclude: false,
-                templateUrl: 'app/html/nav.html'
+                templateUrl: 'app/html/controls/nav.html'
             };
         });
 
