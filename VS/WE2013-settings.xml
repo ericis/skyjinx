@@ -15,6 +15,7 @@
     <CssSyncVendorValues>True</CssSyncVendorValues>
     <EnableBrowserLinkMenu>True</EnableBrowserLinkMenu>
     <EnableEnterFormat>True</EnableEnterFormat>
+    <HtmlEnableMinification>true</HtmlEnableMinification>
     <JavaScriptEnableMinification>True</JavaScriptEnableMinification>
     <JavaScriptGenerateSourceMaps>True</JavaScriptGenerateSourceMaps>
     <JsHint_bitwise>True</JsHint_bitwise>

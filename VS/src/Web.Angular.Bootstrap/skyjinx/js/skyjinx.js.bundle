@@ -2,5 +2,6 @@
 <bundle minify="true" runOnBuild="true" output="skyjinx.js">
   <!--The order of the <file> elements determines the order of the file contents when bundled.-->
   <file>/skyjinx/js/core.js</file>
+  <file>/skyjinx/bootstrap/js/templates.js</file>
   <file>/skyjinx/bootstrap/js/bootstrap.js</file>
 </bundle>

@@ -41,6 +41,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -394,8 +397,11 @@
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="skyjinx\bootstrap\html\container.html" />
+    <Content Include="skyjinx\bootstrap\html\container.min.html" />
     <Content Include="skyjinx\bootstrap\html\nav.html" />
+    <Content Include="skyjinx\bootstrap\html\nav.min.html" />
     <Content Include="skyjinx\bootstrap\html\navbar.html" />
+    <Content Include="skyjinx\bootstrap\html\navbar.min.html" />
     <Content Include="skyjinx\js\skyjinx.js" />
     <Content Include="skyjinx\js\skyjinx.min.js" />
     <Content Include="Web.config">
@@ -431,7 +437,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVC\MVC.fsproj">
       <Project>{6830ff2f-9e56-40b2-94e9-dcd0605549ef}</Project>

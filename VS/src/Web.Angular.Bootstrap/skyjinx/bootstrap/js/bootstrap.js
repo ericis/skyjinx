@@ -13,7 +13,7 @@
     - module: This RequireJS module.
     - angular: Initializes AngularJS.
 */
-define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
+define('skyjinx-bootstrap', ['module', 'angular', 'skyjinx-bootstrap-templates'], function (module, angular, templates) {
     'use strict';
 
     //console.log('define: ' + module.id); // debug define() calls
@@ -30,7 +30,8 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
             return {
                 restrict: 'E',
                 transclude: true,
-                templateUrl: 'skyjinx/bootstrap/html/container.html'
+                // templateUrl: 'skyjinx/bootstrap/html/container.html'
+                template: templates.module.container
             };
         }).
         directive('bsNavbar', function () {
@@ -65,7 +66,8 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
                         title: toggleTitle
                     };
                 }],
-                templateUrl: 'skyjinx/bootstrap/html/navbar.html'
+                // templateUrl: 'skyjinx/bootstrap/html/navbar.html'
+                template: templates.module.navbar
             };
         }).
         directive('bsNav', function () {
@@ -82,7 +84,8 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
                         isAlignedRight: angular.isDefined($scope.alignRight) ? $scope.$eval($scope.alignRight) : false
                     };
                 }],
-                templateUrl: 'skyjinx/bootstrap/html/nav.html'
+                // templateUrl: 'skyjinx/bootstrap/html/nav.html'
+                template: templates.module.nav
             };
         });
 
