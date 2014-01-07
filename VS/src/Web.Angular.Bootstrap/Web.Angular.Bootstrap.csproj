@@ -71,17 +71,17 @@
     <Content Include="skyjinx\bootstrap\html\navbar.min.html">
       <DependentUpon>navbar.html</DependentUpon>
     </Content>
-    <None Include="skyjinx\bootstrap\js\templates.js">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>templates.tt</DependentUpon>
-    </None>
-    <Content Include="Web.Angular.Bootstrap.nuspec" />
     <Content Include="skyjinx\bootstrap\js\templates.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>templates.js</LastGenOutput>
     </Content>
+    <Content Include="Web.Angular.Bootstrap.nuspec" />
     <Content Include="packages.config" />
+    <Content Include="skyjinx\bootstrap\js\templates.js">
+      <DependentUpon>templates.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Content>
     <None Include="skyjinx\js\skyjinx.js.bundle" />
     <Content Include="skyjinx\js\skyjinx.min.js.map">
       <DependentUpon>skyjinx.js.bundle</DependentUpon>
