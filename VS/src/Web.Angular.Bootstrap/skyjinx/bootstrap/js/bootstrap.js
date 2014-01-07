@@ -36,7 +36,7 @@ define('skyjinx-bootstrap', ['module', 'angular'], function (module, angular) {
         directive('bsNavbar', function () {
             return {
                 restrict: 'EA',
-                transclude: false,
+                transclude: true,
                 scope: {
                     toggleTitle: '=',
                     brandTitle: '=',

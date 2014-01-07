@@ -159,6 +159,60 @@ type SpaSection() =
         with get() = x.["view"] :?> string
         and set(value:string) = x.["view"] <- value
 
+type ContentStyleElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("name", DefaultValue = "", IsRequired = true, IsKey = true)>]
+    member x.Name
+        with get() = string x.["name"]
+        and set(value:string) = x.["name"] <- value
+    
+    [<ConfigurationProperty("url", DefaultValue = "", IsRequired = false, IsKey = false)>]
+    member x.Url
+        with get() = string x.["url"]
+        and set(value:string) = x.["url"] <- value
+
+type ContentStyleCollection() =
+    inherit ConfigurationElementCollection()
+
+    member x.Item
+        with get(index) = 
+            x.BaseGet(index) :?> ContentStyleElement
+        and set index (value:ContentStyleElement) =
+
+            if Object.ReferenceEquals(null, x.BaseGet(index)) then
+                x.BaseRemoveAt(index)
+            
+            x.BaseAdd(index, value)
+
+    member x.this
+        with get(index:int) = 
+            x.Item(index)
+        and set index (value:ContentStyleElement) =
+            x.Item(index) <- value
+
+    override x.GetElementKey(element:ConfigurationElement) = 
+        let script = element :?> ContentStyleElement
+        
+        box script.Name
+
+    override x.CreateNewElement() =
+        (new ContentStyleElement()) :> ConfigurationElement
+
+    member x.Add(script:ContentStyleElement) =
+        x.BaseAdd(script)
+
+    member x.Clear() =
+        x.BaseClear()
+
+type ContentStylesElement() =
+    inherit ConfigurationElement()
+
+    [<ConfigurationProperty("", IsRequired = false, IsDefaultCollection = true)>]
+    [<ConfigurationCollection(typeof<ContentStyleCollection>, AddItemName = "style")>]
+    member x.Styles
+        with get() = x.[""] :?> ContentStyleCollection
+
 type ContentScriptPathElement() =
     inherit ConfigurationElement()
 
@@ -268,6 +322,11 @@ type ContentSection() =
         match section with
         | null -> null
         | _ -> section :?> ContentSection
+        
+    [<ConfigurationProperty("styles", IsRequired = true, IsKey = false)>]
+    member x.Styles
+        with get() = x.["styles"] :?> ContentStylesElement
+        and set(value:ContentStylesElement) = x.["styles"] <- value
         
     [<ConfigurationProperty("scripts", IsRequired = true, IsKey = false)>]
     member x.Scripts

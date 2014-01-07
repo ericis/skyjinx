@@ -23,12 +23,14 @@ module HtmlExtensions =
 
     open SkyJinx.Web.Mvc.Configuration
     
-    let private getRequireUrl vpath (url:UrlHelper) =
-        UrlExtensions.Require(url, vpath)
+    let private getRequireUrl (path:string) (url:UrlHelper) =
+        UrlExtensions.Require(url, path)
 
-    let private getUrl vpath (url:UrlHelper) =
-        url.Content(vpath)
-
+    let private getUrl (path:string) (url:UrlHelper) =
+        match path.StartsWith("~/") with
+        | true -> url.Content(path)
+        | false -> path
+        
     let private getScript (html:HtmlHelper) (rootConfigElementName:string) =
     
         // TODO: clean-up this brute-force giant function
@@ -53,10 +55,10 @@ module HtmlExtensions =
         let mainJsConfig = findScriptConfig requireConfig.MainScriptName
 
         if requireJsConfig.IsNone then
-            raise (ConfigurationErrorsException("The scriptName from the RequireJS section (<requirejs scriptName=\"...\">) does not match a script name in the content scripts section (<content><scripts><item name=\"...\" ... </scripts></content>) in configuration"))
+            raise (ConfigurationErrorsException("The scriptName from the RequireJS section (<requirejs scriptName=\"...\">) does not match a script name in the content scripts section (<content><scripts><script name=\"...\" ... </scripts></content>) in configuration"))
 
         if mainJsConfig.IsNone then
-            raise (ConfigurationErrorsException("The mainScriptName from the RequireJS section (<requirejs mainScriptName=\"...\">) does not match a script name in the content scripts section (<content><scripts><item name=\"...\" ... </scripts></content>) in configuration"))
+            raise (ConfigurationErrorsException("The mainScriptName from the RequireJS section (<requirejs mainScriptName=\"...\">) does not match a script name in the content scripts section (<content><scripts><script name=\"...\" ... </scripts></content>) in configuration"))
         
         let requireJsUrl = requireJsConfig.Value.Url
         let mainJsUrl = mainJsConfig.Value.Url
@@ -102,7 +104,7 @@ module HtmlExtensions =
                 let scriptConfig = findScriptConfig requireJsScriptConfig.Name
                 
                 if scriptConfig.IsNone then
-                    raise (ConfigurationErrorsException(sprintf "The RequireJS script name %s from the RequireJS section (<requirejs>) does not match a script name in the content scripts section (<content><scripts><item name=\"...\" ... </scripts></content>) in configuration" requireJsScriptConfig.Name))
+                    raise (ConfigurationErrorsException(sprintf "The RequireJS script name %s from the RequireJS section (<requirejs>) does not match a script name in the content scripts section (<content><scripts><script name=\"...\" ... </scripts></content>) in configuration" requireJsScriptConfig.Name))
 
                 match String.IsNullOrWhiteSpace(scriptConfig.Value.Url) with
                 | true -> 
@@ -152,6 +154,49 @@ module HtmlExtensions =
         let shim = String.Join(",", shims)
 
         sprintf "<script>var require={paths:{%s},shim:{%s}};</script>" paths shim
+        
+    let getStyleSheet (html:HtmlHelper) (name:string) (contentConfig:ContentSection) =
+    
+        let styleConfig = 
+            contentConfig.Styles.Styles.Cast<ContentStyleElement>()
+            |> Seq.tryFind(fun style -> style.Name = name)
+        
+        match styleConfig with
+        | Some(cfg) -> 
+            
+            let urlHelper = new UrlHelper(html.ViewContext.RequestContext)
+
+            let url = getUrl cfg.Url urlHelper
+
+            sprintf "<link rel=\"stylesheet\" href=\"%s\" />" url
+
+        | None -> raise (ConfigurationErrorsException("The style named %s does not match a style name in the content styles section (<content><styles><style name=\"...\" ... </styles></content>) in configuration"))
+
+    [<Extension>]
+    let StyleSheet(html:HtmlHelper, rootConfigElementName:string, name:string) =
+        
+        let contentConfig = ContentSection.GetSection(rootConfigElementName)
+
+        if contentConfig = null then
+            raise (ConfigurationErrorsException("Missing <content> configuration section"))
+        
+        let style = getStyleSheet html name contentConfig
+
+        MvcHtmlString.Create(style)
+        
+    [<Extension>]
+    let StyleSheets(html:HtmlHelper, rootConfigElementName:string, [<ParamArrayAttribute>]names:string[]) =
+        
+        let contentConfig = ContentSection.GetSection(rootConfigElementName)
+
+        if contentConfig = null then
+            raise (ConfigurationErrorsException("Missing <content> configuration section"))
+        
+        let styles = 
+            names
+            |> Seq.map (fun name -> getStyleSheet html name contentConfig)
+
+        MvcHtmlString.Create(String.Concat(styles))
 
     [<Extension>]
     /// Returns the RequireJS script configuration

@@ -16,7 +16,14 @@ open System.Runtime.CompilerServices
 module UrlExtensions =
     
     open System.Web.Mvc
-    
+
+    open SkyJinx.Web.Mvc.Configuration
+
+    let private getUrl (path:string) (url:UrlHelper) =
+        match path.StartsWith("~/") with
+        | true -> url.Content(path)
+        | false -> path
+
     [<Extension>]
     /// Returns a URL string specific to a path used by RequireJS
     let Require(url:UrlHelper, vpath:string) =
@@ -24,6 +31,6 @@ module UrlExtensions =
         | null -> string null
         | _ ->
             // get the regular URL
-            let path = url.Content(vpath)
+            let path = getUrl vpath url
             // remove .js
             path.Replace(".js", "")
