@@ -1,15 +1,15 @@
 ﻿<div ng-controller="NavCtrl">
     <bs-navbar brand-title="title" inverted="false" fixed="true" items="items">
-        <ul class="nav navbar-nav" ng-if="items.length &gt; 0">
+        <bs-nav ng-if="items.length &gt; 0">
             <li ng-repeat="item in items" ng-class="{active:item.selected}"><a href="{{item.url}}">{{item.title}}</a></li>
-        </ul>
+        </bs-nav>
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search" />
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <ul class="nav navbar-nav navbar-right">
+        <bs-nav align-right="true">
             <li><a href="#">Link</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -20,7 +20,6 @@
                     <li class="divider"></li>
                     <li><a href="#">Separated link</a></li>
                 </ul>
-            </li>
-        </ul>
+            </li></bs-nav>
     </bs-navbar>
 </div>
